@@ -1850,6 +1850,9 @@
   // starts at that point even though this early attempt on load will fail.
   window.addEventListener('DOMContentLoaded', () => {
     bgm.play().catch(() => { /* blocked until user taps the envelope, that's expected */ });
+    const qrImage = document.querySelector('.qr-box img');
+    qrImage.src = 'qr bank rakyat.jpeg';
+    qrImage.alt = 'Kod QR Bank Rakyat';
   });
 
   function openInvite() {
@@ -1972,7 +1975,7 @@
 
   // ============ EVENT CONSTANTS ============
   // Google Apps Script Web App URL (ends in /exec) that logs RSVP submissions to a Google Sheet
-  const RSVP_SHEET_URL = 'https://script.google.com/macros/s/AKfycby0i8YyDsTHrR5Ar8fiD7LvWLAJvSUaM8awIXQsqfPl_SVvZSN_g2AthMT-UIm61yAmIw/exec';
+  const RSVP_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwKYICrEgznyYC0XiTnsr8EQbGC9uJuhd8DsAfGC2FKShOQzlbwItj4GWVhGj-0e2IExQ/exec';
   const EVENT_TITLE = 'Majlis Perkahwinan Irfan & Aisyah';
   const EVENT_LOCATION = 'Teratak Sidi Setia, Johan Setia, 41200 Klang, Selangor';
   const EVENT_START = '20261225T030000Z'; // 11.00am MYT = 03:00 UTC
@@ -2166,5 +2169,57 @@
 </script>
 
 </div>
+ = new Blob([ics], { type: 'text/calendar' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'Majlis-Perkahwinan-Irfan-Aisyah.ics';
+    link.click();
+  }
+
+  document.querySelectorAll('.share-btn, .submit-btn, .wish-add-btn, .copy-btn').forEach(attachRipple);
+
+  // ============ CONFETTI ON COUNTDOWN END ============
+  const confettiCanvas = document.getElementById('confetti-canvas');
+  const ctx = confettiCanvas.getContext('2d');
+
+  function resizeConfettiCanvas() {
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeConfettiCanvas);
+  resizeConfettiCanvas();
+
+  function fireConfetti() {
+    if (prefersReducedMotion) return;
+    const colors = ['#f3f6f1', '#dfd3ab', '#8e1f2b', '#c9a25b', '#b98f4f'];
+    confettiPieces = Array.from({ length: 90 }, () => ({
+      x: Math.random() * confettiCanvas.width,
+      y: -20 - Math.random() * confettiCanvas.height * 0.5,
+      r: 4 + Math.random() * 4,
+      c: colors[Math.floor(Math.random() * colors.length)],
+      vy: 2 + Math.random() * 3,
+      vx: -1.5 + Math.random() * 3,
+      rot: Math.random() * 360,
+      vr: -6 + Math.random() * 12
+    }));
+    requestAnimationFrame(animateConfetti);
+    setTimeout(() => { confettiPieces = []; }, 6000);
+  }
+
+  function animateConfetti() {
+    ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    confettiPieces.forEach(p => {
+      p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI / 180);
+      ctx.fillStyle = p.c;
+      ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 0.6);
+      ctx.restore();
+    });
+    if (confettiPieces.length) requestAnimationFrame(animateConfetti);
+  }
+</script>
+
 </body>
 </html>
