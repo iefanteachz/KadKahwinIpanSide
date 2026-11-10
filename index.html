@@ -669,8 +669,55 @@
   }
 
   .info-card .icon {
-    font-size: 1.3rem;
     margin: 6px 0 14px;
+  }
+
+  .calendar-date-icon {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 44px;
+    overflow: hidden;
+    border: 1px solid #b9867d;
+    border-radius: 7px;
+    background: #fffaf5;
+    color: var(--ink);
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  .calendar-date-icon span {
+    width: 100%;
+    padding: 4px 0 3px;
+    background: #a96770;
+    color: #fffaf5;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .calendar-date-icon strong {
+    padding-top: 3px;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 1.1rem;
+  }
+
+  .calendar-date-icon-small {
+    width: 27px;
+    height: 29px;
+    border-radius: 5px;
+  }
+
+  .calendar-date-icon-small span {
+    padding: 3px 0 2px;
+    font-size: 0.42rem;
+  }
+
+  .calendar-date-icon-small strong {
+    padding-top: 2px;
+    font-size: 0.75rem;
   }
 
   .info-card .value {
@@ -1940,7 +1987,12 @@
       <!-- INFO CARD -->
       <div class="info-card reveal-on-scroll">
         <div class="heading">Pada Hari</div>
-        <div class="icon">📅</div>
+        <div class="icon">
+          <span class="calendar-date-icon" aria-label="27 Disember">
+            <span aria-hidden="true">DEC</span>
+            <strong aria-hidden="true">27</strong>
+          </span>
+        </div>
         <div class="value">Ahad, 27 Disember 2026</div>
         <div class="gold-divider card-ornament" aria-hidden="true"><span></span></div>
 
@@ -2040,7 +2092,10 @@
       <!-- ================= SHARE ================= -->
       <div class="closing-card share-countdown-card reveal-on-scroll">
         <div class="share-row">
-          <button class="share-btn" onclick="saveToCalendar()">🗓 Simpan Kalendar</button>
+          <button class="share-btn" onclick="saveToCalendar()">
+            <span class="calendar-date-icon calendar-date-icon-small" aria-hidden="true"><span>DEC</span><strong>27</strong></span>
+            Simpan Kalendar
+          </button>
         </div>
 
         <div class="contact-links">
