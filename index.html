@@ -1539,6 +1539,32 @@
     font-family: inherit;
   }
 
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .contact-heading {
+    color: #80565a;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+  }
+
+  .contact-list {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .contact-list .share-btn {
+    text-decoration: none;
+    padding: 10px 14px;
+  }
+
   /* =====================================================================
      CLOSING
      ===================================================================== */
@@ -1953,7 +1979,7 @@
           <div class="t-item">
             <div class="t-dot">👰</div>
             <div class="t-content">
-              <div class="t-time">12.30pm</div>
+              <div class="t-time">12.00pm</div>
               <div class="t-label">Istiadat Bersanding</div>
             </div>
           </div>    
@@ -2015,7 +2041,15 @@
       <div class="closing-card share-countdown-card reveal-on-scroll">
         <div class="share-row">
           <button class="share-btn" onclick="saveToCalendar()">🗓 Simpan Kalendar</button>
-          <button class="share-btn" onclick="window.open('https://wa.me/60122987482','_blank')">📞 Hubungi Kami</button>
+        </div>
+
+        <div class="contact-links">
+          <div class="contact-heading">Hubungi Kami</div>
+          <div class="contact-list">
+            <a class="share-btn" href="https://wa.me/60182443206" target="_blank" rel="noopener noreferrer" aria-label="Hubungi Nordin melalui WhatsApp">📞 Nordin</a>
+            <a class="share-btn" href="https://wa.me/60193568736" target="_blank" rel="noopener noreferrer" aria-label="Hubungi Hazwan melalui WhatsApp">📞 Hazwan</a>
+            <a class="share-btn" href="https://wa.me/60182426796" target="_blank" rel="noopener noreferrer" aria-label="Hubungi Azlina melalui WhatsApp">📞 Azlina</a>
+          </div>
         </div>
 
         <div class="gold-divider card-ornament" aria-hidden="true"><span></span></div>
